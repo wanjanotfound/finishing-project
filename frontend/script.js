@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addMessageToChat(sender, message) {
-        const messageElement = document.createElement('div');
+        const messageElement = document.createElement('li');
         messageElement.classList.add('message', `${sender}-message`);
         messageElement.textContent = message;
         chatMessages.appendChild(messageElement);

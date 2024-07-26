@@ -28,16 +28,16 @@ def generate_content(prompt, max_length=100, temperature=0.7, top_k=40, top_p=0.
         if response.prompt_feedback.block_reason:
             return f"Content was blocked due to {response.prompt_feedback.block_reason}"
 
-        return response.text
+        return [response.text]
 
     except google.api_core.exceptions.InvalidArgument as e:
-        return f"Invalid argument error: {str(e)}"
+        return [f"Invalid argument error: {str(e)}"]
     except google.api_core.exceptions.ResourceExhausted as e:
-        return f"Resource exhausted error: {str(e)}"
+        return [f"Resource exhausted error: {str(e)}"]
     except google.api_core.exceptions.ServiceUnavailable as e:
-        return f"Service unavailable error: {str(e)}"
+        return [f"Service unavailable error: {str(e)}"]
     except Exception as e:
-        return f"An unexpected error occurred: {str(e)}"
+        return [f"An unexpected error occurred: {str(e)}"]
 
 # Example usage
 if __name__ == "__main__":
