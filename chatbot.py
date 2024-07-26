@@ -1,11 +1,15 @@
+import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 from google.generativeai.types import GenerationConfig, SafetySettingDict
 from google.api_core import retry
 import google.api_core.exceptions
 from vector_db import add_user_interest, get_user_interests
 
+load_dotenv()
+
 # Configure Gemini
-genai.configure(api_key='AIzaSyDb1pQJSNf3Zre8XbM_mcSKNsX9VYiBGdM')
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 gemini_model = genai.GenerativeModel('gemini-pro')
 
 # Safety settings
