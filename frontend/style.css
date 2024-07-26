@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #001E09;
     margin: 0;
     padding: 0;
 }
@@ -13,14 +13,14 @@ body {
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
 }
 
 #chat-container {
-    background-color: white;
+    background-color: #c1e899;
     border-radius: 5px;
     padding: 20px;
-    height: 400px;
+    height: 380px;
     overflow-y: auto;
     margin-bottom: 20px;
 }
@@ -33,15 +33,16 @@ h1 {
 input[type="text"] {
     flex-grow: 1;
     padding: 10px;
+    font-family: Arial;
     font-size: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid #55883b;
     border-radius: 5px 0 0 5px;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #55883b;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -49,7 +50,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #c1e899;
 }
 
 .message {
@@ -59,13 +60,16 @@ button:hover {
 }
 
 .user-message {
-    background-color: #007bff;
+    background-color: #55883b;
     color: white;
     align-self: flex-end;
 }
 
 .bot-message {
-    background-color: #f1f1f1;
+    background-color: #e6f0dc;
     color: #333;
     align-self: flex-start;
+}
+.content-type-label {
+    color: #ffffff;
 }
