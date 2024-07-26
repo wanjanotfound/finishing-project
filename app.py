@@ -1,11 +1,16 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, send_from_directory
+import os
 from chatbot import generate_content, add_user_interest
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return send_from_directory('frontend', 'index.html')
+
+@app.route('/<path:path>')
+def serve_frontend(path):
+    return send_from_directory('frontend', path)
 
 @app.route('/generate', methods=['POST'])
 def generate():
