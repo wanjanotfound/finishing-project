@@ -1,7 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from chatbot import generate_content, add_user_interest
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/generate', methods=['POST'])
 def generate():
@@ -21,5 +25,4 @@ def add_interest():
     return jsonify({'message': 'Interest added successfully'})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)
-
+    app.run(host='0.0.0.0', port=10000)
