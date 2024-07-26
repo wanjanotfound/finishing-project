@@ -1,6 +1,6 @@
 transformers
 torch
-chromadb
+chromadb==0.3.29
 sentence-transformers
 google-generativeai
 flask
