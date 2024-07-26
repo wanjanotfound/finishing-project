@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from your_main_script import generate_content, add_user_interest
+from chatbot import generate_content, add_user_interest
 
 app = Flask(__name__)
 
