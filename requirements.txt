@@ -2,4 +2,5 @@ transformers
 torch
 chromadb
 sentence-transformers
-
+google-generativeai
+flask
