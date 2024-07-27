@@ -24,9 +24,8 @@ def generate():
     user_id = data.get('user_id')
     content_type = data.get('content_type')
     user_input = data.get('user_input')
-    num_items = data.get('num_items', 5)  # Default to generating 5 items if not specified
-    content_list = generate_content(user_id, content_type, user_input, num_items)
-    return jsonify({'content': content_list})
+    content = generate_content(user_id, content_type, user_input)
+    return jsonify({'content': content})
 
 @app.route('/add_interest', methods=['POST'])
 def add_interest():
