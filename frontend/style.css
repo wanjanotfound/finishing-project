@@ -3,7 +3,11 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #001E09, #003311);
-    background-image: url(Premium\ Photo\ _\ White\ marble\ texture\ background.jpeg);
+    background-image: url(plant_leaves_green_116496_2048x1152.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     
     margin: 0;
     padding: 0;
@@ -25,7 +29,7 @@ body {
 h1 {
     
     text-align: center;
-    color: transparent;
+    color: rgb(217, 245, 195);
     background-image: url(ocean.jpeg);
     font-weight: 900;
     margin-bottom: 10px;
