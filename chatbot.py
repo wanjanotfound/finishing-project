@@ -24,7 +24,7 @@ safety_settings = [
     google.api_core.exceptions.ResourceExhausted,
     google.api_core.exceptions.ServiceUnavailable
 ))
-def generate_ai_content(prompt, max_length=200, temperature=0.8, top_k=40, top_p=0.95):
+def generate_ai_content(prompt, max_length=1000, temperature=1.0, top_k=40, top_p=0.95):
     try:
         generation_config = GenerationConfig(
             temperature=temperature,
@@ -42,6 +42,9 @@ def generate_ai_content(prompt, max_length=200, temperature=0.8, top_k=40, top_p
         return response.text
     except Exception as e:
         return f"An error occurred: {str(e)}"
+
+def get_welcome_message():
+    return "Content Generator: Hello! What would you like to do?"
 
 def moderate_content(text):
     prompt = f"""
@@ -67,20 +70,22 @@ def generate_content(user_id, content_type, user_input=None):
     interests = get_user_interests(user_id)
     
     if content_type == "post":
-        prompt = f"Generate an engaging social media post about one of these topics: {', '.join(interests)}"
+        prompt = f"Generate an engaging social media post about one of these topics: {', '.join(interests)}. Do not use any special formatting or symbols for emphasis. Write in plain text."
     elif content_type == "comment":
-        prompt = f"Generate a thoughtful comment on the following post, considering interests in {', '.join(interests)}: {user_input}"
+        prompt = f"Generate a thoughtful comment on the following post, considering interests in {', '.join(interests)}: {user_input}. Respond in plain text without any special formatting."
     elif content_type == "response":
-        prompt = f"Given the user's interests in {', '.join(interests)}, generate a response to: {user_input}"
+        prompt = f"Given the user's interests in {', '.join(interests)}, generate a response to: {user_input}. Use plain text only, without any special formatting."
     else:
         return "Invalid content type specified."
     
-    content = generate_ai_content(prompt, max_length=200, temperature=0.8)
+    content = generate_ai_content(prompt, max_length=1000, temperature=1.0)  # Increased max_length
     
     if moderate_content(content) == "inappropriate":
         return "Content generation failed due to potential guideline violation. Please try again."
     
-    return content
+    return content.strip()  # Remove any leading/trailing whitespace
+    
+   
 
 def main():
     user_id = 1

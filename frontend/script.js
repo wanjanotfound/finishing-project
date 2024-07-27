@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addInterestButton.addEventListener('click', addInterest);
 
+    fetch('/welcome')
+        .then(response => response.json())
+        .then(data => {
+            addMessageToChat('bot', data.message);
+        })
+        .catch(error => console.error('Error:', error));
+
     function sendMessage() {
         const message = messageInput.value.trim();
         if (message) {
@@ -32,10 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }),
             })
             .then(response => response.json())
-            .then(data => {
-                addMessageToChat('bot', data.content);
-            })
-            .catch(error => console.error('Error:', error));
+.then(data => {
+    displayResponse(data.content);
+})
+.catch(error => {
+    console.error('Error:', error);
+    displayResponse('An error occurred while generating content.');
+});
         }
     }
 
@@ -69,4 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 });
-
+function displayResponse(content) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageElement = document.createElement('li');
+    messageElement.className = 'bot-message';
+    messageElement.textContent = content;  // Use textContent to avoid HTML injection
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;  // Auto-scroll to the bottom
+}
