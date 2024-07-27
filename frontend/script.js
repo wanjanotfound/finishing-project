@@ -39,13 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }),
             })
             .then(response => response.json())
-.then(data => {
-    displayResponse(data.content);
-})
-.catch(error => {
-    console.error('Error:', error);
-    displayResponse('An error occurred while generating content.');
-});
+            .then(data => {
+                addMessageToChat('bot', data.content);
+            })
+            .catch(error => console.error('Error:', error));
         }
     }
 
